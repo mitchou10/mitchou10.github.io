@@ -16,10 +16,9 @@ export default function Hero() {
       <div className="hero__content">
         <p className="hero__greeting">Hi, I&apos;m</p>
         <h1 className="hero__name">mitchou10</h1>
-        <h2 className="hero__title">Developer &amp; Creator</h2>
+        <h2 className="hero__title">Senior Data Scientist</h2>
         <p className="hero__description">
-          I build things for the web. Passionate about clean code, great user
-          experiences, and turning ideas into reality.
+          I build things for company. Valuable insights using AI.
         </p>
         <div className="hero__cta">
           <a href="#projects" className="btn btn--primary" onClick={handleProjects}>
