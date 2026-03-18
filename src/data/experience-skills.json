@@ -1,0 +1,50 @@
+[
+  {
+    "label": "Python",
+    "usage": "Used as the core language for ML/GenAI APIs, data pipelines, and production services."
+  },
+  {
+    "label": "PyTorch",
+    "usage": "Used for model training and fine-tuning on computer vision and LLM-oriented tasks."
+  },
+  {
+    "label": "FastAPI",
+    "usage": "Used to expose model and document services through robust REST APIs."
+  },
+  {
+    "label": "LangChain",
+    "usage": "Used to orchestrate LLM chains and tool-based reasoning workflows."
+  },
+  {
+    "label": "RAG",
+    "usage": "Used to ground responses on internal document corpora with retrieval + generation."
+  },
+  {
+    "label": "Kubernetes",
+    "usage": "Used to deploy, scale, and isolate AI services across environments."
+  },
+  {
+    "label": "Docker",
+    "usage": "Used to package services for reproducible local and production execution."
+  },
+  {
+    "label": "PostgreSQL",
+    "usage": "Used to store metadata, task state, and structured outputs from AI pipelines."
+  },
+  {
+    "label": "Qdrant",
+    "usage": "Used as vector storage for semantic search and retrieval quality in RAG use cases."
+  },
+  {
+    "label": "Whisper",
+    "usage": "Used to transcribe meetings and audio streams for downstream analysis."
+  },
+  {
+    "label": "OpenCV",
+    "usage": "Used for image preprocessing and vision pipelines in OCR and inspection tasks."
+  },
+  {
+    "label": "MLOps",
+    "usage": "Used to monitor, version, and continuously improve model lifecycle in production."
+  }
+]
