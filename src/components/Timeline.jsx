@@ -93,10 +93,10 @@ export default function Timeline() {
   }, [isHistoryOpen]);
 
   return (
-    <section id="timeline" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/35 px-6 py-10">
+    <section id="experiences" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/35 px-6 py-10">
       <div className="mx-auto max-w-5xl">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Timeline</p>
-        <h2 className="mt-2 text-center text-3xl font-bold text-slate-100 sm:text-4xl">The Journey That Shaped Me</h2>
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Experiences</p>
+        <h2 className="mt-2 text-center text-3xl font-bold text-slate-100 sm:text-4xl">Experience That Shaped Me</h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-slate-400">
           Affichage des 6 derniers mois ci-dessous, avec l&apos;historique plus ancien disponible dans une modal.
         </p>

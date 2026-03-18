@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 const SECTION_ORDER = [
   { id: 'hero', label: 'Hero' },
   { id: 'about', label: 'About' },
-  { id: 'timeline', label: 'Timeline' },
+  { id: 'experiences', label: 'Experiences' },
   { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ];

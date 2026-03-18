@@ -6,7 +6,7 @@ import SearchDialog from './SearchDialog';
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
-  { label: 'Timeline', href: '#timeline' },
+  { label: 'Experiences', href: '#experiences' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];

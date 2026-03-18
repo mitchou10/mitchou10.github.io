@@ -20,10 +20,10 @@ const LOCAL_SEARCH_ITEMS = [
     source: 'local',
   },
   {
-    id: 'timeline',
-    title: 'Timeline - Journey',
+    id: 'experiences',
+    title: 'Experiences - Journey',
     snippet: 'Recent milestones and archive of older events.',
-    href: '#timeline',
+    href: '#experiences',
     source: 'local',
   },
   {
