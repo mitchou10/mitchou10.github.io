@@ -58,7 +58,7 @@ function ProjectCard({ title, description, tags, github, demo }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="mb-12 rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12">
+    <section id="projects" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12">
       <div className="mx-auto max-w-5xl">
         <h2 className="text-center text-3xl font-bold text-slate-100 sm:text-4xl">Projects</h2>
         <p className="mt-2 text-center text-slate-400">Things I&apos;ve built</p>

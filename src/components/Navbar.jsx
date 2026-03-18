@@ -20,7 +20,7 @@ export default function Navbar() {
   const handleNav = (e, href) => {
     e.preventDefault();
     setMenuOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   return (
