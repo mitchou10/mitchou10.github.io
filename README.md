@@ -1,91 +1,119 @@
 # mitchou10.github.io
 
-Personal portfolio site built with **React + Vite**, deployed on GitHub Pages.
+Portfolio personnel Data/AI construit avec React + Vite, deploye sur GitHub Pages.
 
-## 🚀 Live Site
+## Live
 
-[https://mitchou10.github.io](https://mitchou10.github.io)
+- Site: https://mitchou10.github.io
 
-## 📦 Tech Stack
+## Stack
 
-- [React 19](https://react.dev/) — UI library
-- [Vite 8](https://vite.dev/) — build tool & dev server
-- Plain CSS — no external CSS framework, keeping it lean
-- GitHub Actions — automatic deployment on push to `main`
+- React 19
+- Vite 8
+- Tailwind CSS
+- shadcn-style utilities (cva, clsx, tailwind-merge)
+- KaTeX (rendu formule)
+- Lucide React (icones)
 
-## 🛠️ Development
+## Fonctionnalites
+
+- One-page portfolio: Hero, About, Experiences, Projects, Contact
+- Navigation fluide centree sur les sections
+- Moteur de recherche integre (Ctrl+K / Cmd+K)
+- Recherche locale + recherche docs Markdown distantes (raw GitHub)
+- Donnees pilotees par JSON pour simplifier les mises a jour de contenu
+- Version de l'app visible dans le header (ex: v0.0.0)
+
+## Donnees Modifiables
+
+Les contenus principaux sont editables sans toucher au JSX:
+
+- Experiences: src/data/experiences.json
+- Skills Experiences: src/data/experience-skills.json
+- Skills panel data historique (si utilise): src/data/current-allocation.json
+- Sources docs recherche distante: src/config/searchDocs.js
+
+Exemple experience:
+
+```json
+{
+	"date": "2024-12-01",
+	"startDate": "2024-12-01",
+	"endDate": null,
+	"title": "French Ministry - DTNUM - Senior Data Scientist",
+	"description": "Delivered GenAI document analysis systems...",
+	"tools": ["Python", "FastAPI", "Kubernetes"]
+}
+```
+
+## Lancer en Local
 
 ```bash
-# Install dependencies
 npm install
-
-# Start dev server (hot reload)
 npm run dev
+```
 
-# Build for production
+Build production:
+
+```bash
 npm run build
-
-# Preview production build
 npm run preview
 ```
 
-### Docker / Docker Compose
+## Docker
 
 ```bash
-# Build the image
 make docker-build
-
-# Start in Docker Compose (dev mode)
 make docker-dev
-
-# Start in Docker Compose watch mode (auto sync/rebuild)
 make docker-watch
-
-# Start in Docker Compose (debug logs for Vite)
 make docker-debug
-
-# Stop services
 make docker-down
 ```
 
-The app is exposed on `http://localhost:5173`.
+App disponible sur http://localhost:5173.
 
-`docker-watch` runs watch mode on the main `app` service with Docker Compose rules:
-- source files are synced into the container automatically
-- `package.json` / `package-lock.json` changes trigger a rebuild
+## Version Front
 
-## 📂 Project Structure
+La version affichee dans le header vient de package.json:
 
-```
+- source: package.json -> version
+- injection build: vite.config.js via import.meta.env.VITE_APP_VERSION
+
+Pour changer la version visible dans le front:
+
+1. Modifier package.json
+2. Relancer npm run dev (ou rebuild Docker)
+
+## Structure Projet
+
+```text
 src/
-├── components/
-│   ├── Navbar.jsx / .css   — Sticky navigation bar
-│   ├── Hero.jsx / .css     — Landing hero section
-│   ├── About.jsx / .css    — About me section
-│   ├── Skills.jsx / .css   — Skills with progress bars
-│   ├── Projects.jsx / .css — Project cards
-│   ├── Contact.jsx / .css  — Contact form
-│   └── Footer.jsx / .css   — Footer
-├── App.jsx                 — Root component
-└── index.css               — Global design tokens & utilities
+	components/
+		Navbar.jsx
+		Hero.jsx
+		About.jsx
+		Timeline.jsx
+		TimelineVisuals.jsx
+		Projects.jsx
+		Contact.jsx
+		SearchDialog.jsx
+	config/
+		searchDocs.js
+	data/
+		experiences.json
+		experience-skills.json
+		current-allocation.json
+	App.jsx
+	main.jsx
+	index.css
 ```
 
-## 🚢 Deployment
+## Deployment GitHub Pages
 
-Pushes to `main` automatically build and deploy via the
-`.github/workflows/deploy.yml` GitHub Actions workflow using
-the built-in GitHub Pages action.
+Le deploy est fait via GitHub Actions sur la branche main.
 
-## Troubleshooting GitHub Pages
+Checklist rapide:
 
-If you see errors like:
-- `Expected a JavaScript-or-Wasm module script but ... MIME type of "text/jsx"`
-- `GET /favicon.svg 404`
-
-Then GitHub Pages is serving the repository source instead of the built `dist` output.
-
-Checklist:
-1. In GitHub repository settings, go to Pages.
-2. Set Build and deployment Source to `GitHub Actions`.
-3. Ensure the deploy workflow runs successfully after a push to `main`.
-4. Open the website with a hard refresh (Ctrl+Shift+R).
+1. Settings -> Pages -> Source = GitHub Actions
+2. Workflow deploy vert apres push
+3. Hard refresh du navigateur apres release

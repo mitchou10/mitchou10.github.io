@@ -4,6 +4,8 @@ import { Search } from 'lucide-react';
 
 import SearchDialog from './SearchDialog';
 
+const APP_VERSION = import.meta.env.VITE_APP_VERSION || 'dev';
+
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Experiences', href: '#experiences' },
@@ -60,7 +62,12 @@ export default function Navbar() {
             href="#hero"
             onClick={(e) => handleNav(e, '#hero')}
           >
-            mitchou10
+            <span className="flex items-center gap-2">
+              <span>mitchou10</span>
+              <span className="rounded border border-slate-700 px-1.5 py-0.5 text-[10px] font-medium text-slate-400">
+                v{APP_VERSION}
+              </span>
+            </span>
           </a>
 
           <div className="hidden items-center gap-3 md:flex">

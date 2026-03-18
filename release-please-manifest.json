@@ -1,0 +1,9 @@
+{
+  "packages": {
+    ".": {
+      "package-name": "mitchou10",
+      "include-component-in-tag": false,
+      "component": "mitchou10"
+    }
+  }
+}
