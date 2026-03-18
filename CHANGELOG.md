@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/mitchou10/mitchou10.github.io/compare/v0.3.0...v0.3.1) (2026-03-18)
+
+
+### Bug Fixes
+
+* update French to English translations in README and Timeline component ([d954274](https://github.com/mitchou10/mitchou10.github.io/commit/d954274090a953956e5f12f42995a9a1c67bd705))
+
 ## [0.3.0](https://github.com/mitchou10/mitchou10.github.io/compare/v0.2.0...v0.3.0) (2026-03-18)
 
 
