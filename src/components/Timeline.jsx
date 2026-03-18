@@ -8,7 +8,7 @@ import TimelineVisuals from './TimelineVisuals';
 const ITEMS_PER_PAGE = 5;
 
 function formatDate(isoDate) {
-  return new Date(isoDate).toLocaleDateString('fr-FR', {
+  return new Date(isoDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
   });
@@ -31,7 +31,7 @@ function formatPeriod(event) {
   }
 
   const startLabel = formatDate(start);
-  const endLabel = end ? formatDate(end) : 'Maintenant';
+  const endLabel = end ? formatDate(end) : 'Now';
   return `${startLabel} - ${endLabel}`;
 }
 
@@ -86,7 +86,7 @@ export default function Timeline() {
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Experiences</p>
         <h2 className="mt-2 text-center text-3xl font-bold text-slate-100 sm:text-4xl">Experience That Shaped Me</h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-slate-400">
-          Affichage des 6 derniers mois ci-dessous, avec l&apos;historique plus ancien disponible dans une modal.
+          Showing the last 6 months below, with older history available in a modal.
         </p>
 
         <TimelineVisuals />
@@ -94,7 +94,7 @@ export default function Timeline() {
         {olderEvents.length > 0 && (
           <div className="mt-6 flex justify-center">
             <Button variant="outline" onClick={() => setIsHistoryOpen(true)}>
-              Voir l&apos;historique ({olderEvents.length} evenements)
+              View Archive ({olderEvents.length} events)
             </Button>
           </div>
         )}
@@ -144,7 +144,7 @@ export default function Timeline() {
 
             {recentEvents.length === 0 && (
               <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-5 text-center text-slate-400">
-                Aucun evenement sur les 6 derniers mois pour le moment.
+                No events in the last 6 months yet.
               </div>
             )}
           </div>
@@ -156,7 +156,7 @@ export default function Timeline() {
           <button
             type="button"
             className="absolute inset-0 bg-slate-950/80"
-            aria-label="Fermer la modal"
+            aria-label="Close modal"
             onClick={() => setIsHistoryOpen(false)}
           />
 
@@ -164,7 +164,7 @@ export default function Timeline() {
             <button
               type="button"
               className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
-              aria-label="Fermer"
+              aria-label="Close"
               onClick={() => {
                 setIsHistoryOpen(false);
                 setOlderPage(1);
@@ -175,7 +175,7 @@ export default function Timeline() {
 
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Archive</p>
             <h3 id="timeline-history-title" className="mt-2 text-2xl font-bold text-slate-100">
-              Evenements anterieurs a 6 mois
+              Events Older Than 6 Months
             </h3>
 
             <div className="mt-6 space-y-3">
@@ -209,7 +209,7 @@ export default function Timeline() {
                     onClick={() => setOlderPage((page) => Math.max(1, page - 1))}
                     disabled={safeOlderPage === 1}
                   >
-                    Precedent
+                    Previous
                   </Button>
                   <p className="text-sm text-slate-300">
                     Page {safeOlderPage} / {olderTotalPages}
@@ -219,7 +219,7 @@ export default function Timeline() {
                     onClick={() => setOlderPage((page) => Math.min(olderTotalPages, page + 1))}
                     disabled={safeOlderPage === olderTotalPages}
                   >
-                    Suivant
+                    Next
                   </Button>
                 </div>
               )}

@@ -1,6 +1,6 @@
 # mitchou10.github.io
 
-Portfolio personnel Data/AI construit avec React + Vite, deploye sur GitHub Pages.
+Personal Data/AI portfolio built with React + Vite, deployed on GitHub Pages.
 
 ## Live
 
@@ -12,28 +12,28 @@ Portfolio personnel Data/AI construit avec React + Vite, deploye sur GitHub Page
 - Vite 8
 - Tailwind CSS
 - shadcn-style utilities (cva, clsx, tailwind-merge)
-- KaTeX (rendu formule)
-- Lucide React (icones)
+- KaTeX (formula rendering)
+- Lucide React (icons)
 
-## Fonctionnalites
+## Features
 
 - One-page portfolio: Hero, About, Experiences, Projects, Contact
-- Navigation fluide centree sur les sections
-- Moteur de recherche integre (Ctrl+K / Cmd+K)
-- Recherche locale + recherche docs Markdown distantes (raw GitHub)
-- Donnees pilotees par JSON pour simplifier les mises a jour de contenu
-- Version de l'app visible dans le header (ex: v0.0.0)
+- Smooth centered section navigation
+- Built-in search (Ctrl+K / Cmd+K)
+- Local search + remote Markdown docs search (raw GitHub)
+- JSON-driven content for easy updates
+- App version displayed in the header (ex: v0.0.0)
 
-## Donnees Modifiables
+## Editable Data
 
-Les contenus principaux sont editables sans toucher au JSX:
+Main content can be edited without touching JSX:
 
 - Experiences: src/data/experiences.json
 - Skills Experiences: src/data/experience-skills.json
-- Skills panel data historique (si utilise): src/data/current-allocation.json
-- Sources docs recherche distante: src/config/searchDocs.js
+- Historical skills panel data (if used): src/data/current-allocation.json
+- Remote docs sources: src/config/searchDocs.js
 
-Exemple experience:
+Experience example:
 
 ```json
 {
@@ -70,21 +70,22 @@ make docker-debug
 make docker-down
 ```
 
-App disponible sur http://localhost:5173.
+App runs on http://localhost:5173.
 
 ## Version Front
 
-La version affichee dans le header vient de package.json:
+The version shown in the header comes from package.json:
 
 - source: package.json -> version
-- injection build: vite.config.js via import.meta.env.VITE_APP_VERSION
+- build injection: vite.config.js via import.meta.env.VITE_APP_VERSION
 
-Pour changer la version visible dans le front:
+To update the visible version in the frontend:
 
-1. Modifier package.json
-2. Relancer npm run dev (ou rebuild Docker)
+1. Update package.json
+2. Restart npm run dev (or rebuild Docker)
 
 ## Structure Projet
+## Project Structure
 
 ```text
 src/
@@ -110,10 +111,10 @@ src/
 
 ## Deployment GitHub Pages
 
-Le deploy est fait via GitHub Actions sur la branche main.
+Deployment is handled by GitHub Actions on the main branch.
 
-Checklist rapide:
+Quick checklist:
 
 1. Settings -> Pages -> Source = GitHub Actions
-2. Workflow deploy vert apres push
-3. Hard refresh du navigateur apres release
+2. Deploy workflow is green after push
+3. Hard-refresh your browser after release
