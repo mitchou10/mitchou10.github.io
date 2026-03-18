@@ -14,6 +14,27 @@ function formatDate(isoDate) {
   });
 }
 
+function getEventReferenceDate(event) {
+  if (!event.endDate) {
+    return new Date();
+  }
+
+  return new Date(event.endDate || event.date || event.startDate);
+}
+
+function formatPeriod(event) {
+  const start = event.startDate || event.date;
+  const end = event.endDate;
+
+  if (!start) {
+    return '';
+  }
+
+  const startLabel = formatDate(start);
+  const endLabel = end ? formatDate(end) : 'Maintenant';
+  return `${startLabel} - ${endLabel}`;
+}
+
 function getExperienceTags(event) {
   const tools = Array.isArray(event.tools) ? event.tools : [];
   const skills = Array.isArray(event.skills) ? event.skills : [];
@@ -25,7 +46,7 @@ export default function Timeline() {
   const [olderPage, setOlderPage] = useState(1);
 
   const sortedEvents = useMemo(
-    () => [...experiencesData].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+    () => [...experiencesData].sort((a, b) => getEventReferenceDate(b).getTime() - getEventReferenceDate(a).getTime()),
     [],
   );
 
@@ -34,8 +55,8 @@ export default function Timeline() {
     return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate());
   }, []);
 
-  const recentEvents = sortedEvents.filter((event) => new Date(event.date).getTime() >= sixMonthsAgo.getTime());
-  const olderEvents = sortedEvents.filter((event) => new Date(event.date).getTime() < sixMonthsAgo.getTime());
+  const recentEvents = sortedEvents.filter((event) => getEventReferenceDate(event).getTime() >= sixMonthsAgo.getTime());
+  const olderEvents = sortedEvents.filter((event) => getEventReferenceDate(event).getTime() < sixMonthsAgo.getTime());
 
   const olderTotalPages = Math.max(1, Math.ceil(olderEvents.length / ITEMS_PER_PAGE));
   const safeOlderPage = Math.min(olderPage, olderTotalPages);
@@ -89,7 +110,7 @@ export default function Timeline() {
               const isLeft = index % 2 === 0;
 
               return (
-                <article key={`${item.date}-${item.title}`} className="relative pl-10 md:pl-0">
+                <article key={`${item.startDate || item.date}-${item.title}`} className="relative pl-10 md:pl-0">
                   <div
                     className="absolute left-0 top-6 h-6 w-6 rounded-full border-4 border-slate-950 bg-cyan-400 md:left-1/2 md:-translate-x-1/2"
                     aria-hidden="true"
@@ -97,7 +118,7 @@ export default function Timeline() {
 
                   <div className={isLeft ? 'md:mr-[52%] md:pr-8' : 'md:ml-[52%] md:pl-8'}>
                     <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5 shadow-sm shadow-cyan-900/10 transition hover:border-cyan-500/60">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-cyan-400">{formatDate(item.date)}</p>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-cyan-400">{formatPeriod(item)}</p>
                       <h3 className="mt-2 text-xl font-semibold text-slate-100">{item.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-slate-400">{item.description}</p>
                       {getExperienceTags(item).length > 0 && (
@@ -106,7 +127,7 @@ export default function Timeline() {
                           <div className="mt-2 flex flex-wrap gap-2">
                             {getExperienceTags(item).map((tag) => (
                               <span
-                                key={`${item.date}-${item.title}-${tag}`}
+                                key={`${item.startDate || item.date}-${item.title}-${tag}`}
                                 className="rounded-full border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-[11px] font-medium text-slate-300"
                               >
                                 {tag}
@@ -159,8 +180,8 @@ export default function Timeline() {
 
             <div className="mt-6 space-y-3">
               {paginatedOlderEvents.map((event) => (
-                <article key={`${event.date}-${event.title}`} className="rounded-xl border border-slate-800 bg-slate-950/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-cyan-400">{formatDate(event.date)}</p>
+                <article key={`${event.startDate || event.date}-${event.title}`} className="rounded-xl border border-slate-800 bg-slate-950/70 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-cyan-400">{formatPeriod(event)}</p>
                   <h5 className="mt-1 text-lg font-semibold text-slate-100">{event.title}</h5>
                   <p className="mt-1 text-sm text-slate-400">{event.description}</p>
                   {getExperienceTags(event).length > 0 && (
@@ -169,7 +190,7 @@ export default function Timeline() {
                       <div className="mt-2 flex flex-wrap gap-2">
                         {getExperienceTags(event).map((tag) => (
                           <span
-                            key={`${event.date}-${event.title}-${tag}`}
+                            key={`${event.startDate || event.date}-${event.title}-${tag}`}
                             className="rounded-full border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-[11px] font-medium text-slate-300"
                           >
                             {tag}

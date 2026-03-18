@@ -1,63 +1,125 @@
 [
   {
-    "date": "2013-09-01",
-    "title": "Sopra-Steria ",
-    "description": "Build abnormality detection system for a large telecom company, improving their ability to identify and respond to network issues.",
-    "tools": ["Python", "scikit-learn", "Pandas", "SQL"]
+    "date": "2024-12-01",
+    "startDate": "2024-12-01",
+    "endDate": null,
+    "title": "French Ministry - DTNUM - Senior Data Scientist",
+    "description": "Delivered GenAI document analysis systems with multi-agent workflows, RAG, OCR, transcription/diarization, and production-grade MLOps on Kubernetes.",
+    "tools": [
+      "Python",
+      "PyTorch",
+      "FastAPI",
+      "LangGraph",
+      "CrewAI",
+      "LangChain",
+      "Whisper",
+      "Vosk",
+      "Qdrant",
+      "Redis",
+      "Docker",
+      "Kubernetes",
+      "Helm",
+      "ArgoCD",
+      "GitHub Actions",
+      "OAuth"
+    ]
   },
   {
-    "date": "2015-09-01",
-    "title": "Orange",
-    "description": "Spam detection system for a large telecom company, enhancing their ability to filter out unwanted communications and improve customer experience.",
-    "tools": ["Python", "NLP", "TF-IDF", "XGBoost"]
+    "date": "2020-03-01",
+    "startDate": "2020-03-01",
+    "endDate": "2024-11-30",
+    "title": "Fujitsu - CoE - Lead Data Scientist",
+    "description": "Led data science initiatives across GenAI/RAG, computer vision, and MLOps; built custom agents, improved retrieval quality, and deployed end-to-end AI products.",
+    "tools": [
+      "Python",
+      "PyTorch",
+      "OpenCV",
+      "C++",
+      "LangChain",
+      "LlamaIndex",
+      "FAISS",
+      "Kafka",
+      "MLflow",
+      "ClearML",
+      "Airflow",
+      "Docker",
+      "Kubernetes",
+      "FastAPI",
+      "Jenkins"
+    ]
   },
   {
-    "date": "2016-09-01",
-    "title": "AXA France",
-    "description": "Fraud detection system for a major insurance company, helping them identify and prevent fraudulent claims, saving costs and improving customer trust.",
-    "tools": ["Python", "Spark", "SQL", "Gradient Boosting"]
+    "date": "2019-05-01",
+    "startDate": "2019-05-01",
+    "endDate": "2020-03-01",
+    "title": "Maisons du Monde - DataLab - Senior Data Scientist",
+    "description": "Built customer targeting and product ranking models, integrated ML workloads on GCP, and led a small squad delivering business-facing AI use cases.",
+    "tools": [
+      "Python",
+      "PyTorch",
+      "GCP",
+      "AutoML",
+      "MLflow",
+      "Docker",
+      "GitLab"
+    ]
   },
   {
-    "date": "2019-09-01",
-    "title": "Fujitsu",
-    "description": "Computer vision system for a leading technology company, enabling them to automate visual inspection processes and improve efficiency in manufacturing.",
-    "tools": ["PyTorch", "OpenCV", "MLOps", "Docker"]
+    "date": "2016-10-01",
+    "startDate": "2016-10-01",
+    "endDate": "2019-05-01",
+    "title": "AXA France - Senior Data Scientist",
+    "description": "Developed fraud and scoring services, built data marts for ML, and industrialized data engineering pipelines and APIs for insurance analytics.",
+    "tools": [
+      "Python",
+      "scikit-learn",
+      "MongoDB",
+      "Kafka",
+      "FastAPI",
+      "Flask",
+      "MLflow",
+      "GitLab"
+    ]
   },
   {
-    "date": "2024-12-05",
-    "title": "French Ministry",
-    "description": "Transcription system for the French Ministry",
-    "tools": ["Whisper", "FastAPI", "PostgreSQL", "GitHub Actions"]
-  }, 
-  {
-    "date": "2025-02-05",
-    "title": "French Ministry",
-    "description": "OCR service for the French Ministry, enabling them to digitize and extract information from physical documents, improving accessibility and efficiency in document management.",
-    "tools": ["Python", "FastAPI", "PostgreSQL", "Kubernetes", "Celery", "Asynchronous processing"]
-  }, 
-  {
-    "date": "2025-02-05",
-    "title": "French Ministry",
-    "description": "Summary service for the French Ministry, providing concise and accurate summaries of lengthy documents, enhancing information retrieval and decision-making processes.",
-    "tools": ["Python", "FastAPI", "PostgreSQL", "Kubernetes", "Celery", "Asynchronous processing"]
-  }, 
-  {
-    "date": "2025-05-05",
-    "title": "French Ministry",
-    "description": "Build data extraction system for the French Ministry, enabling them to efficiently extract relevant information from large volumes of data, improving data analysis and decision-making capabilities.",
-    "tools": ["Python", "FastAPI", "PostgreSQL", "Kubernetes", "Celery", "Asynchronous processing"]
-  }, 
-  {
-    "date": "2025-08-05",
-    "title": "French Ministry",
-    "description": "RAG system for the French Ministry, enabling them to retrieve and generate relevant information from large datasets, improving information access and decision-making processes.",
-    "tools": ["Python", "FastAPI", "PostgreSQL", "Kubernetes", "Celery", "Asynchronous processing"]
+    "date": "2015-10-01",
+    "startDate": "2015-10-01",
+    "endDate": "2016-10-01",
+    "title": "Orange - Data Scientist",
+    "description": "Deployed spam detection services and ran early computer vision PoCs for face recognition and image understanding in telecom contexts.",
+    "tools": [
+      "Python",
+      "TF-IDF",
+      "Naive Bayes",
+      "OpenCV",
+      "Caffe",
+      "YOLO",
+      "Docker",
+      "Flask"
+    ]
   },
   {
-    "date": "2026-01-05",
-    "title": "French Ministry",
-    "description": "Document exploration system for the French Ministry, enabling them to efficiently explore and analyze large collections of documents, improving information retrieval and decision-making capabilities.",
-    "tools": ["Python", "FastAPI", "PostgreSQL", "Kubernetes", "Celery", "Asynchronous processing", "Qdrant", "Vue.js"]
+    "date": "2013-10-01",
+    "startDate": "2013-10-01",
+    "endDate": "2015-10-01",
+    "title": "Sopra Steria - Data Scientist",
+    "description": "Prototyped anomaly detection and predictive analytics solutions for cybersecurity and data leakage prevention use cases.",
+    "tools": [
+      "Python",
+      "Elasticsearch",
+      "GitLab"
+    ]
+  },
+  {
+    "date": "2008-09-01",
+    "startDate": "2008-09-01",
+    "endDate": "2013-06-30",
+    "title": "ESILV - Engineering Degree - Mechanical Engineering",
+    "description": "Engineering education with strong analytical foundations, completed in La Defense, France.",
+    "tools": [
+      "Mathematics",
+      "Engineering",
+      "Problem Solving"
+    ]
   }
-  
 ]

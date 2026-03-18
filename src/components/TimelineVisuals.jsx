@@ -1,79 +1,46 @@
-import { useMemo, useState } from 'react';
-import { BarChart3, CalendarClock, Rocket } from 'lucide-react';
+import { useMemo } from 'react';
 
-import { Button } from '@/components/ui/button';
-import currentAllocation from '@/data/current-allocation.json';
-
-const ITEMS_PER_PAGE = 5;
+import experienceSkills from '@/data/experience-skills.json';
 
 export default function TimelineVisuals() {
-  const [allocationPage, setAllocationPage] = useState(1);
-
-  const totalPages = Math.max(1, Math.ceil(currentAllocation.length / ITEMS_PER_PAGE));
-  const safeAllocationPage = Math.min(allocationPage, totalPages);
-  const paginatedAllocation = useMemo(() => {
-    const start = (safeAllocationPage - 1) * ITEMS_PER_PAGE;
-    return currentAllocation.slice(start, start + ITEMS_PER_PAGE);
-  }, [safeAllocationPage]);
+  const normalizedSkills = useMemo(
+    () =>
+      experienceSkills
+        .map((item) => {
+          if (typeof item === 'string') {
+            return { label: item, usage: '' };
+          }
+          return {
+            label: item?.label || item?.name || '',
+            usage: item?.usage || item?.description || '',
+          };
+        })
+        .filter((item) => item.label),
+    [],
+  );
 
   return (
     <div className="mt-6 space-y-3">
-      <article className="rounded-2xl border border-slate-700/70 bg-slate-950/45 p-4">
-        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 px-2.5 py-1">
-            <Rocket className="h-3.5 w-3.5 text-cyan-300" aria-hidden="true" />
-            +6 months momentum
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 px-2.5 py-1">
-            <CalendarClock className="h-3.5 w-3.5 text-cyan-300" aria-hidden="true" />
-            Bi-weekly cadence
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 px-2.5 py-1">
-            <BarChart3 className="h-3.5 w-3.5 text-cyan-300" aria-hidden="true" />
-            KPI tracked
-          </span>
-        </div>
-      </article>
-
       <article className="rounded-2xl border border-cyan-500/25 bg-gradient-to-r from-cyan-500/8 via-slate-900/70 to-slate-900/70 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">Current Allocation</p>
-        <div className="mt-3 space-y-3">
-          {paginatedAllocation.map((item) => (
-            <div key={item.label}>
-              <div className="mb-1 flex items-center justify-between text-xs text-slate-300">
-                <span>{item.label}</span>
-                <span>{item.percent}%</span>
-              </div>
-              <div className="h-2 rounded-full bg-slate-800">
-                <div
-                  className="h-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
-                  style={{ width: `${item.percent}%` }}
-                />
-              </div>
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">Skills</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {normalizedSkills.map((skill) => (
+            <div key={skill.label} className="group relative">
+              <button
+                type="button"
+                title={skill.usage || skill.label}
+                className="rounded-full border border-slate-700 bg-slate-900/75 px-3 py-1 text-xs font-medium text-slate-200 transition hover:border-cyan-400 focus-visible:border-cyan-400 focus-visible:outline-none"
+              >
+                {skill.label}
+              </button>
+
+              {skill.usage && (
+                <div className="pointer-events-none invisible absolute left-1/2 top-[calc(100%+8px)] z-20 w-64 -translate-x-1/2 rounded-lg border border-slate-700 bg-slate-950/95 px-3 py-2 text-left text-xs text-slate-300 opacity-0 shadow-lg transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  {skill.usage}
+                </div>
+              )}
             </div>
           ))}
-
-          {totalPages > 1 && (
-            <div className="mt-2 flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-              <Button
-                variant="outline"
-                onClick={() => setAllocationPage((page) => Math.max(1, page - 1))}
-                disabled={safeAllocationPage === 1}
-              >
-                Precedent
-              </Button>
-              <p className="text-sm text-slate-300">
-                Page {safeAllocationPage} / {totalPages}
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => setAllocationPage((page) => Math.min(totalPages, page + 1))}
-                disabled={safeAllocationPage === totalPages}
-              >
-                Suivant
-              </Button>
-            </div>
-          )}
         </div>
       </article>
     </div>
