@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 
+import TimelineVisuals from './TimelineVisuals';
+
 const TIMELINE_EVENTS = [
   {
     date: '2026-03-10',
@@ -91,13 +93,15 @@ export default function Timeline() {
   }, [isHistoryOpen]);
 
   return (
-    <section id="timeline" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12">
+    <section id="timeline" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/35 px-6 py-10">
       <div className="mx-auto max-w-5xl">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Timeline 2</p>
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Timeline</p>
         <h2 className="mt-2 text-center text-3xl font-bold text-slate-100 sm:text-4xl">The Journey That Shaped Me</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-slate-400">
+        <p className="mx-auto mt-2 max-w-2xl text-center text-slate-400">
           Affichage des 6 derniers mois ci-dessous, avec l&apos;historique plus ancien disponible dans une modal.
         </p>
+
+        <TimelineVisuals />
 
         {olderEvents.length > 0 && (
           <div className="mt-6 flex justify-center">
@@ -107,7 +111,7 @@ export default function Timeline() {
           </div>
         )}
 
-        <div className="relative mt-10">
+        <div className="relative mt-8">
           <div
             className="absolute left-3 top-0 h-full w-px bg-slate-700 md:left-1/2 md:-translate-x-1/2"
             aria-hidden="true"

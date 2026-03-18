@@ -1,9 +1,11 @@
+import ProjectsVisuals from './ProjectsVisuals';
+
 const PROJECTS = [
   {
     title: 'Portfolio Site',
     description:
       'This very portfolio — built with React and Vite. Clean, responsive, and deployed on GitHub Pages.',
-    tags: ['React', 'Vite', 'CSS'],
+    tags: ['React', 'Vite', 'Tailwind'],
     github: 'https://github.com/mitchou10/mitchou10.github.io',
     demo: 'https://mitchou10.github.io',
   },
@@ -58,11 +60,14 @@ function ProjectCard({ title, description, tags, github, demo }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12">
+    <section id="projects" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/35 px-6 py-10">
       <div className="mx-auto max-w-5xl">
         <h2 className="text-center text-3xl font-bold text-slate-100 sm:text-4xl">Projects</h2>
-        <p className="mt-2 text-center text-slate-400">Things I&apos;ve built</p>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <p className="mt-2 text-center text-slate-400">Selected work and ongoing builds</p>
+
+        <ProjectsVisuals />
+
+        <div className="mt-7 grid gap-4 md:grid-cols-2">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.title} {...p} />
           ))}

@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
+import AboutVisuals from './AboutVisuals';
 
 export default function About() {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setVisible(true);
+    }, 300);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,7 +24,10 @@ export default function About() {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, []);
 
   const revealBase =
@@ -31,9 +39,9 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12"
+      className="relative mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12"
     >
-      <div className="mx-auto max-w-5xl">
+      <div className="relative z-10 mx-auto max-w-5xl">
         <h2
           className={`text-center text-3xl font-bold text-slate-100 sm:text-4xl ${revealBase} ${
             visible ? shownState : hiddenState
@@ -89,6 +97,13 @@ export default function About() {
                 GitHub Profile
               </a>
             </div>
+
+            <AboutVisuals
+              visible={visible}
+              revealBase={revealBase}
+              shownState={shownState}
+              hiddenState={hiddenState}
+            />
           </div>
         </div>
       </div>

@@ -60,11 +60,73 @@
     }
   }
 
+  @keyframes graph-draw {
+    0% {
+      stroke-dasharray: 0 100;
+      opacity: 0.2;
+    }
+    100% {
+      stroke-dasharray: 100 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes graph-fade {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes graph-dot {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+
+  @keyframes graph-drift {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
   .animate-float-soft {
     animation: float-soft 6s ease-in-out infinite;
   }
 
   .animate-pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .animate-graph-draw {
+    animation: graph-draw 1.6s ease-out forwards;
+  }
+
+  .animate-graph-fade {
+    transform-origin: center;
+    animation: graph-fade 1s ease-out 180ms forwards;
+  }
+
+  .animate-graph-dot {
+    transform-origin: center;
+    animation: graph-dot 2.8s ease-in-out infinite;
+  }
+
+  .animate-graph-drift {
+    animation: graph-drift 6.5s ease-in-out infinite;
   }
 }
