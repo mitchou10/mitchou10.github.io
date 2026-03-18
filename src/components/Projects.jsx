@@ -1,5 +1,3 @@
-import './Projects.css';
-
 const PROJECTS = [
   {
     title: 'Portfolio Site',
@@ -20,41 +18,51 @@ const PROJECTS = [
 
 function ProjectCard({ title, description, tags, github, demo }) {
   return (
-    <div className="project-card">
-      <div className="project-card__body">
-        <h3 className="project-card__title">{title}</h3>
-        <p className="project-card__desc">{description}</p>
-        <div className="project-card__tags">
+    <article className="flex h-full flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition hover:-translate-y-1 hover:border-cyan-500/70">
+      <div>
+        <h3 className="text-xl font-semibold text-slate-100">{title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-slate-400">{description}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((t) => (
-            <span key={t} className="tag">
+            <span key={t} className="rounded-full border border-slate-700 px-3 py-1 text-xs font-medium text-slate-300">
               {t}
             </span>
           ))}
         </div>
       </div>
-      <div className="project-card__links">
+      <div className="mt-6 flex flex-wrap gap-3">
         {github && (
-          <a href={github} target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--sm">
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300"
+          >
             GitHub
           </a>
         )}
         {demo && (
-          <a href={demo} target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--sm">
+          <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+          >
             Live Demo
           </a>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="section projects">
-      <div className="container">
-        <h2 className="section__title">Projects</h2>
-        <p className="section__subtitle">Things I&apos;ve built</p>
-        <div className="projects__grid">
+    <section id="projects" className="mb-12 rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="text-center text-3xl font-bold text-slate-100 sm:text-4xl">Projects</h2>
+        <p className="mt-2 text-center text-slate-400">Things I&apos;ve built</p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.title} {...p} />
           ))}

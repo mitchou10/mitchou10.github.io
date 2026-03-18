@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './Contact.css';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -19,24 +18,27 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section contact">
-      <div className="container contact__inner">
-        <h2 className="section__title">Get In Touch</h2>
-        <p className="section__subtitle">
+    <section id="contact" className="mb-12 rounded-3xl border border-slate-800 bg-slate-900/40 px-6 py-12">
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-center text-3xl font-bold text-slate-100 sm:text-4xl">Get In Touch</h2>
+        <p className="mt-2 text-center text-slate-400">
           Have a project in mind or just want to say hi? I&apos;d love to hear from you.
         </p>
 
         {sent ? (
-          <div className="contact__thanks">
-            <p>Thanks! Your mail client should have opened. 🎉</p>
-            <button className="btn btn--outline" onClick={() => setSent(false)}>
+          <div className="mt-10 flex flex-col items-center gap-3 rounded-xl border border-slate-800 bg-slate-900 p-6 text-center text-slate-300">
+            <p>Thanks! Your mail client should have opened.</p>
+            <button
+              className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300"
+              onClick={() => setSent(false)}
+            >
               Send Another
             </button>
           </div>
         ) : (
-          <form className="contact__form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
+          <form className="mt-10 space-y-5" onSubmit={handleSubmit}>
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-medium text-slate-300">Name</label>
               <input
                 id="name"
                 name="name"
@@ -45,10 +47,11 @@ export default function Contact() {
                 value={form.name}
                 onChange={handleChange}
                 required
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-300">Email</label>
               <input
                 id="email"
                 name="email"
@@ -57,10 +60,11 @@ export default function Contact() {
                 value={form.email}
                 onChange={handleChange}
                 required
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
+            <div className="space-y-2">
+              <label htmlFor="message" className="block text-sm font-medium text-slate-300">Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -69,16 +73,25 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 required
+                className="w-full resize-y rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
               />
             </div>
-            <button type="submit" className="btn btn--primary">
+            <button
+              type="submit"
+              className="inline-flex items-center rounded-lg bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+            >
               Send Message
             </button>
           </form>
         )}
 
-        <div className="contact__links">
-          <a href="https://github.com/mitchou10" target="_blank" rel="noopener noreferrer">
+        <div className="mt-8 flex justify-center">
+          <a
+            href="https://github.com/mitchou10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-slate-400 transition hover:text-cyan-300"
+          >
             GitHub
           </a>
         </div>
