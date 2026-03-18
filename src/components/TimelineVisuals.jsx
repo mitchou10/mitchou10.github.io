@@ -1,11 +1,21 @@
+import { useMemo, useState } from 'react';
 import { BarChart3, CalendarClock, Rocket } from 'lucide-react';
 
-const FOCUS_STREAM = [
-  { label: 'Product', percent: 86 },
-  { label: 'LLM Systems', percent: 74 },
-];
+import { Button } from '@/components/ui/button';
+import currentAllocation from '@/data/current-allocation.json';
+
+const ITEMS_PER_PAGE = 5;
 
 export default function TimelineVisuals() {
+  const [allocationPage, setAllocationPage] = useState(1);
+
+  const totalPages = Math.max(1, Math.ceil(currentAllocation.length / ITEMS_PER_PAGE));
+  const safeAllocationPage = Math.min(allocationPage, totalPages);
+  const paginatedAllocation = useMemo(() => {
+    const start = (safeAllocationPage - 1) * ITEMS_PER_PAGE;
+    return currentAllocation.slice(start, start + ITEMS_PER_PAGE);
+  }, [safeAllocationPage]);
+
   return (
     <div className="mt-6 space-y-3">
       <article className="rounded-2xl border border-slate-700/70 bg-slate-950/45 p-4">
@@ -28,7 +38,7 @@ export default function TimelineVisuals() {
       <article className="rounded-2xl border border-cyan-500/25 bg-gradient-to-r from-cyan-500/8 via-slate-900/70 to-slate-900/70 p-4">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">Current Allocation</p>
         <div className="mt-3 space-y-3">
-          {FOCUS_STREAM.map((item) => (
+          {paginatedAllocation.map((item) => (
             <div key={item.label}>
               <div className="mb-1 flex items-center justify-between text-xs text-slate-300">
                 <span>{item.label}</span>
@@ -42,6 +52,28 @@ export default function TimelineVisuals() {
               </div>
             </div>
           ))}
+
+          {totalPages > 1 && (
+            <div className="mt-2 flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950/60 p-3">
+              <Button
+                variant="outline"
+                onClick={() => setAllocationPage((page) => Math.max(1, page - 1))}
+                disabled={safeAllocationPage === 1}
+              >
+                Precedent
+              </Button>
+              <p className="text-sm text-slate-300">
+                Page {safeAllocationPage} / {totalPages}
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => setAllocationPage((page) => Math.min(totalPages, page + 1))}
+                disabled={safeAllocationPage === totalPages}
+              >
+                Suivant
+              </Button>
+            </div>
+          )}
         </div>
       </article>
     </div>

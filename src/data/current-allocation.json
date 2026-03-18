@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Product",
+    "percent": 86
+  },
+  {
+    "label": "LLM Systems",
+    "percent": 74
+  }, 
+  {
+    "label": "AI Research",
+    "percent": 62
+  },
+    {
+        "label": "Engineering",
+        "percent": 90
+    },
+    {
+        "label": "Leadership",
+        "percent": 80
+    }, 
+    {
+        "label": "Communication",
+        "percent": 85
+    }
+]
