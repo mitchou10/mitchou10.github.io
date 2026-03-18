@@ -3,8 +3,8 @@ import { Github, Linkedin } from 'lucide-react';
 const CONTACT_CHANNELS = [
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/mitchou10',
-    href: 'https://www.linkedin.com/in/mitchou10',
+    value: 'linkedin.com/in/michou-h-89823687',
+    href: 'https://www.linkedin.com/in/michou-h-89823687/',
     icon: Linkedin,
   },
   {
