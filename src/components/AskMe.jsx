@@ -46,9 +46,17 @@ function GlobePanel() {
 
   return (
     <div className="flex h-full flex-col rounded-2xl border border-slate-700/70 bg-slate-950/50 overflow-hidden">
-      <div className="flex items-center gap-2 border-b border-slate-800 px-5 py-3">
-        <Globe className="h-3.5 w-3.5 text-cyan-400" />
-        <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">Globe interactif</p>
+      <div className="flex items-center justify-between gap-2 border-b border-slate-800 px-5 py-3">
+        <div className="flex items-center gap-2">
+          <Globe className="h-3.5 w-3.5 text-cyan-400" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">Interactive Globe</p>
+        </div>
+        <div className="ml-4 flex items-center gap-2">
+          <span className="rounded-full bg-yellow-400/10 px-2 py-0.5 text-[11px] font-medium text-yellow-300 ring-1 ring-yellow-400/20">
+            Beta
+          </span>
+          <p className="text-xs text-slate-400">Feature in development — may be unstable</p>
+        </div>
       </div>
       <div ref={containerRef} className="flex-1" style={{ minHeight: 0 }}>
         <div ref={ref} className="w-full h-full" />
@@ -68,7 +76,7 @@ export default function AskMe() {
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 text-center lg:text-left">
           <h2 className="text-3xl font-bold text-slate-100 sm:text-4xl">Ask Me</h2>
-          <p className="mt-2 text-slate-400">Explore mon profil ou interagis avec le globe</p>
+          <p className="mt-2 text-slate-400">Explore my profile or interact with the globe</p>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-2" style={{ height: 520 }}>
