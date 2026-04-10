@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import experiencesData from '@/data/experiences.json';
 
 import TimelineVisuals from './TimelineVisuals';
+import SectionCard from './SectionCard';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -81,13 +82,12 @@ export default function Timeline() {
   }, [isHistoryOpen]);
 
   return (
-    <section id="experiences" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/35 px-6 py-10">
+    <SectionCard
+      id="experiences"
+      title="Experience That Shaped Me"
+      description="Recent work and archived history"
+    >
       <div className="mx-auto max-w-5xl">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Experiences</p>
-        <h2 className="mt-2 text-center text-3xl font-bold text-slate-100 sm:text-4xl">Experience That Shaped Me</h2>
-        <p className="mx-auto mt-2 max-w-2xl text-center text-slate-400">
-          Showing the last 6 months below, with older history available in a modal.
-        </p>
 
         <TimelineVisuals />
 
@@ -152,7 +152,7 @@ export default function Timeline() {
       </div>
 
       {isHistoryOpen && (
-        <div className="fixed inset-0 z-50 grid place-items-center p-4" role="dialog" aria-modal="true" aria-labelledby="timeline-history-title">
+        <div className="fixed inset-0 z-[60] grid place-items-center p-4" role="dialog" aria-modal="true" aria-labelledby="timeline-history-title">
           <button
             type="button"
             className="absolute inset-0 bg-slate-950/80"
@@ -227,6 +227,6 @@ export default function Timeline() {
           </div>
         </div>
       )}
-    </section>
+    </SectionCard>
   );
 }

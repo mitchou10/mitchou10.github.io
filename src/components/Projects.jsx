@@ -1,4 +1,5 @@
 import ProjectsVisuals from './ProjectsVisuals';
+import SectionCard from './SectionCard';
 
 const PROJECTS = [
   {
@@ -60,19 +61,13 @@ function ProjectCard({ title, description, tags, github, demo }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="mb-10 flex min-h-[calc(100vh-6rem)] scroll-mt-24 items-center rounded-3xl border border-slate-800 bg-slate-900/35 px-6 py-10">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="text-center text-3xl font-bold text-slate-100 sm:text-4xl">Projects</h2>
-        <p className="mt-2 text-center text-slate-400">Selected work and ongoing builds</p>
-
-        <ProjectsVisuals />
-
-        <div className="mt-7 grid gap-4 md:grid-cols-2">
-          {PROJECTS.map((p) => (
-            <ProjectCard key={p.title} {...p} />
-          ))}
-        </div>
+    <SectionCard id="projects" title="Projects" description="Selected work and ongoing builds">
+      <ProjectsVisuals />
+      <div className="mt-7 grid gap-4 md:grid-cols-2">
+        {PROJECTS.map((p) => (
+          <ProjectCard key={p.title} {...p} />
+        ))}
       </div>
-    </section>
+    </SectionCard>
   );
 }
