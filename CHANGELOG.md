@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/mitchou10/mitchou10.github.io/compare/v0.3.1...v0.4.0) (2026-04-10)
+
+
+### Features
+
+* add Ask Me section with interactive globe and chat functionality ([9fbb8a5](https://github.com/mitchou10/mitchou10.github.io/commit/9fbb8a548a3aeec0a516b2c0ac368f125c079b27))
+* enhance Ask Me section with interactive globe and update text to English ([c468683](https://github.com/mitchou10/mitchou10.github.io/commit/c46868371a0d59924925e248c7dbbe8d237089d6))
+
 ## [0.3.1](https://github.com/mitchou10/mitchou10.github.io/compare/v0.3.0...v0.3.1) (2026-03-18)
 
 
