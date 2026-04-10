@@ -7,6 +7,7 @@ import SearchDialog from './SearchDialog';
 const APP_VERSION = import.meta.env.VITE_APP_VERSION || 'dev';
 
 const NAV_LINKS = [
+  { label: 'Ask Me', href: '#ask-me' },
   { label: 'About', href: '#about' },
   { label: 'Experiences', href: '#experiences' },
   { label: 'Projects', href: '#projects' },

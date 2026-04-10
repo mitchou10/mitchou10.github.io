@@ -9,11 +9,13 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Timeline from './components/Timeline';
 import Projects from './components/Projects';
+import AskMe from './components/AskMe';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 const SECTION_ORDER = [
   { id: 'hero', label: 'Hero' },
+  { id: 'ask-me', label: 'Ask Me' },
   { id: 'about', label: 'About' },
   { id: 'experiences', label: 'Experiences' },
   { id: 'projects', label: 'Projects' },
@@ -87,10 +89,13 @@ export default function App() {
       <Navbar />
       <main className="relative z-10 mx-auto w-full px-4 pt-20 sm:px-6 lg:px-8">
         <Hero />
-        <About />
-        <Timeline />
-        <Projects />
-        <Contact />
+        <AskMe />
+        <div className="mb-10 grid gap-4 md:grid-cols-2">
+          <About />
+          <Timeline />
+          <Projects />
+          <Contact />
+        </div>
       </main>
       <div className="relative z-10">
         <Footer />
