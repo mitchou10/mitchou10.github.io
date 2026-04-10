@@ -357,21 +357,70 @@ export default function AskMeChat() {
                   : 'bg-slate-800/80 text-slate-300 border border-slate-700/50'
               }`}
             >
-              {m.content || (loading && i === messages.length - 1
-                ? <Loader2 className="h-4 w-4 animate-spin text-slate-500" />
-                : null)}
-              {m.source && (
-                <a
-                  href={m.source.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector(m.source.href)?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="mt-2 flex items-center gap-1 text-[11px] text-cyan-400 hover:text-cyan-300 transition-colors"
-                >
-                  <span>↗</span>
-                  <span className="underline underline-offset-2">{m.source.label}</span>
-                </a>
+              {creds?.local && m.role === 'assistant' ? (
+                <div>
+                  <p className="text-sm text-slate-300">Here is the source / response</p>
+                  {m.source ? (
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const href = m.source?.href || '#about';
+                          try {
+                            const id = href.startsWith('#') ? href.slice(1) : href;
+                            const headerButton = document.querySelector(`#${id} button`);
+                            if (headerButton) {
+                              headerButton.click();
+                              document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                              return;
+                            }
+                          } catch (e) {
+                            // ignore and fallback to scroll
+                          }
+                          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }}
+                        className="inline-flex items-center gap-2 rounded-md border border-slate-700 px-3 py-1 text-xs text-cyan-300 hover:bg-slate-800/40 transition"
+                      >
+                        Source
+                        {m.source?.label ? <span className="text-[11px] text-slate-400">· {m.source.label}</span> : null}
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <>
+                  {m.content || (loading && i === messages.length - 1
+                    ? <Loader2 className="h-4 w-4 animate-spin text-slate-500" />
+                    : null)}
+
+                  {m.role === 'assistant' && m.source ? (
+                    <div className="mt-2 flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const href = m.source?.href || '#about';
+                          try {
+                            const id = href.startsWith('#') ? href.slice(1) : href;
+                            const headerButton = document.querySelector(`#${id} button`);
+                            if (headerButton) {
+                              headerButton.click();
+                              // ensure section is visible
+                              document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                              return;
+                            }
+                          } catch (e) {
+                            // ignore and fallback to scroll
+                          }
+                          document.querySelector(m.source?.href || '#about')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }}
+                        className="inline-flex items-center gap-2 rounded-md border border-slate-700 px-3 py-1 text-xs text-cyan-300 hover:bg-slate-800/40 transition"
+                      >
+                        Source
+                        {m.source?.label ? <span className="text-[11px] text-slate-400">· {m.source.label}</span> : null}
+                      </button>
+                    </div>
+                  ) : null}
+                </>
               )}
             </div>
           </div>
